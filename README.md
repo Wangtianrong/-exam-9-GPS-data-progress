@@ -96,6 +96,17 @@ int main(void) {
 		h -= 16;
 	else
 		h += 8;
-	printf("%d:%d:%d", h, m, s);
+	if(h<10);
+	printf("0%d:", h);
+	else
+	printf("%d:", h);
+	if(m<10);
+	printf("0%d:", m);
+	else
+	printf("%d:", m);
+	if(s<10);
+	printf("0%d", s);
+	else
+	printf("%d", s);
 	return 0;
 }
