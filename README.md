@@ -62,16 +62,13 @@ int main(void) {
 	int cnt = 0;
 	char data[1000][1000];//易错！数组要么定义时直接初始化，由编译器数大小，要么定义时自主给出确定的大小！！
 	scanf("%s", &data[0][0]);
-	while (strcmp(data[cnt],"END")!=0){//字符串比较用strcmp!!不能直接等
+	while (strncmp(data[cnt],"END",3)!=0){//字符串比较用strcmp!!不能直接等//只判断前三位字符！！未初始化的其他都是乱码 
 		scanf("%s", &data[++cnt][0]);
 	}
 // -------------------读取完毕-----------------------------------
-	char* c = 0;//定义一个char*,为后面保留
 	int h, m, s;
 	for (int i = 0;i < cnt + 1;i++) {
-		*c = data[i][6] = '\0';
-		if (strcmp(data[i],"$GPRMC")==0) {
-			data[i][6] = *c;
+		if (strncmp(data[i],"$GPRMC",6)==0) {
 			int sum = data[i][1];
 			int j = 2;
 			while (data[i][j]!='*'){
